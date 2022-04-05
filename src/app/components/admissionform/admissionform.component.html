@@ -1,0 +1,134 @@
+<div class="card-body">
+  <div fxLayout="column" fxLayoutAlign="space-evenly center">
+    <h2>Admission Form</h2>
+
+    <div class="col-sm-4">
+      <form
+        [formGroup]="service.formModel"
+        autocomplete="off"
+        (ngSubmit)="onSubmit()"
+      >
+           <div fxLayout="50">
+            <div class="form-group required" >
+              <label>StudentId</label>
+              <input
+                type="text"
+                aria-label="text"
+                class="form-control"
+                formControlName="StudentId"
+              />
+              <label
+                class="text-danger"
+                *ngIf="
+                  service.formModel.get('StudentId').touched &&
+                  service.formModel.get('StudentId').errors?.required
+                "
+                >This field is manditory</label
+              >
+            </div>
+
+            <div class="form-group required">
+              <label>Title</label>
+              <input type="text" class="form-control" formControlName="Title" />
+            </div>
+          </div>
+
+          <div fxLayout="50">
+            <div class="form-group required">
+              <label>FirstName</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="FirstName"
+              />
+            </div>
+
+            <div class="form-group required">
+              <label>LastName</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="LastName"
+              />
+            </div>
+          </div>
+
+          <div fxLayoutlg="75">
+            <div class="form-group required">
+              <label>DOB</label>
+              <input type="date" class="form-control" formControlName="DOB" />
+            </div>
+          </div>
+          <div fxLayoutlg="75">
+            <div class="form-group required">
+              <label>Email</label>
+              <input
+                type="email"
+                aria-label="email"
+                 class="form-control"
+                formControlName="Email"
+              />
+              <label
+                class="text-danger"
+                *ngIf="
+                  service.formModel.get('Email').touched &&
+                  service.formModel.get('Email').errors?.email
+                "
+                >Invalid Email</label
+              >
+            </div>
+          </div>
+
+          <div fxLayout="50">
+            <div class="form-group required">
+              <label>Password</label>
+              <input
+                type="password"
+                aria-label="password"
+                class="form-control"
+                formControlName="Password"
+              />
+              <label
+                class="text-danger"
+                *ngIf="
+                  service.formModel.get('Password').touched &&
+                  service.formModel.get('Password').errors?.required
+                "
+                >Incorrect Password</label
+              >
+              <label
+                class="text-danger"
+                *ngIf="
+                  service.formModel.get('Password').touched &&
+                  service.formModel.get('Password').errors?.minlength
+                "
+                >Minimum 4 characters required</label
+              >
+            </div>
+
+            <div class="form-group required">
+              <label>Gender</label>
+              <input
+                type="email"
+                aria-label="search"
+                class="form-control"
+                formControlName="Gender"
+              />
+            </div>
+          </div>
+
+          <div class="form-row required">
+            <div class="form-group col-md-12">
+              <button
+                type="submit"
+                class="btn btn-primary btn-block"
+                [disabled]="!service.formModel.valid"
+              >
+                Submit
+              </button>
+            </div>            
+          </div>
+       </form>
+    </div>
+  </div>
+</div>
